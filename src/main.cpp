@@ -1,6 +1,7 @@
 #include <raylib.h>
 #include "ball.h"
 #include "player.h"
+#include "target.h"
 
 int main()
 {
@@ -11,6 +12,7 @@ int main()
 
     Ball ball = Ball();
     Player player = Player(&ball);
+    Target target = Target(&ball);
 
     InitWindow(screenWidth, screenHeight, "Adagio!");
     SetTargetFPS(60);
@@ -21,7 +23,9 @@ int main()
         ClearBackground(darkGreen);
         ball.Update();
         player.Update();
+        target.Update();
         player.Draw();
+        target.Draw();
         ball.Draw();
         EndDrawing();
     }
