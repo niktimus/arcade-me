@@ -2,7 +2,7 @@
 #include "ball.h"
 #include <raylib.h>
 
-Target::Target(Ball* ball) : refBall(ball)
+Target::Target(Ball* ball) : ball(ball)
 {
     x = 0;
     y = 0;
@@ -10,6 +10,15 @@ Target::Target(Ball* ball) : refBall(ball)
     height = 50;
     radius = 10;
 }
+
+// Target::Target(Ball* ball) : ball(ball)
+// {
+//     x = 0;
+//     y = 0;
+//     width = 200;
+//     height = 50;
+//     radius = 10;
+// }
 
 void Target::Update()
 {
@@ -20,12 +29,12 @@ void Target::Update()
     rec.height = height;
 
     Vector2 v = Vector2();
-    v.x = refBall->GetX();
-    v.y = refBall->GetY();
+    v.x = ball->GetX();
+    v.y = ball->GetY();
 
-    if (CheckCollisionCircleRec(v, refBall->GetRadius(), rec))
+    if (CheckCollisionCircleRec(v, ball->GetRadius(), rec))
     {
-        refBall->Reflect();
+        ball->Reflect();
         delete this;
     }
 }

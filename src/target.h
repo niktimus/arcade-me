@@ -5,11 +5,12 @@ class Target
 {
 public:
     Target(Ball* ball);
+    Target(Ball* ball, int x, int width);
     void Update();
     void Draw();
 
 private:
-    Ball* refBall;
+    Ball* ball;
     int x;
     int y;
     int width;
