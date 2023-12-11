@@ -17,4 +17,7 @@ private:
     int width;
     int speedX;
     int radius;
+
+    void Move();
+    void Collide();
 };

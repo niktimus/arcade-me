@@ -22,6 +22,13 @@ Player::Player(Ball* ball) : refBall (ball)
 
 void Player::Update()
 {
+    Move();
+
+    Collide();
+}
+
+void Player::Move()
+{
     int newX = x;
 
     if (IsKeyDown(keyLeft))
@@ -34,6 +41,22 @@ void Player::Update()
         ;
     else
         x = newX;
+}
+
+void Player::Collide()
+{
+    Rectangle rec = Rectangle();
+    rec.x = x - radius;
+    rec.y = y - radius;
+    rec.width = radius + width + radius;
+    rec.height = radius * 2;
+
+    Vector2 v = Vector2();
+    v.x = refBall->GetX();
+    v.y = refBall->GetY();
+
+    if (CheckCollisionCircleRec(v, refBall->GetRadius(), rec))
+        refBall->Reflect();
 }
 
 void Player::Draw()
