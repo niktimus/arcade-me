@@ -4,8 +4,8 @@
 
 Target::Target(Ball* ball) : refBall(ball)
 {
-    x = 100;
-    y = 100;
+    x = 0;
+    y = 0;
     width = 200;
     height = 50;
     radius = 10;
@@ -13,6 +13,21 @@ Target::Target(Ball* ball) : refBall(ball)
 
 void Target::Update()
 {
+    Rectangle rec = Rectangle();
+    rec.x = x;
+    rec.y = y;
+    rec.width = width;
+    rec.height = height;
+
+    Vector2 v = Vector2();
+    v.x = refBall->GetX();
+    v.y = refBall->GetY();
+
+    if (CheckCollisionCircleRec(v, refBall->GetRadius(), rec))
+    {
+        refBall->Reflect();
+        delete this;
+    }
 }
 
 void Target::Draw()

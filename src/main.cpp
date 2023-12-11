@@ -12,7 +12,7 @@ int main()
 
     Ball ball = Ball();
     Player player = Player(&ball);
-    Target target = Target(&ball);
+    Target* target = new Target(&ball);
 
     InitWindow(screenWidth, screenHeight, "Adagio!");
     SetTargetFPS(60);
@@ -21,11 +21,13 @@ int main()
     {
         BeginDrawing();
         ClearBackground(darkGreen);
+        if (target != nullptr) {
+            (*target).Update();
+            (*target).Draw();
+        }
         ball.Update();
         player.Update();
-        target.Update();
         player.Draw();
-        target.Draw();
         ball.Draw();
         EndDrawing();
     }
