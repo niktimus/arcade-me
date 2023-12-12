@@ -13,7 +13,8 @@
           "stopAtEntry": false,
           "cwd": "${fileDirname}",
           "environment": [],
-          "console": "internalConsole"
+          "console": "externalTerminal",
+          "preLaunchTask": "build debug"
         },
         {
           "name": "Debug",
@@ -22,7 +23,7 @@
           "program": "${workspaceFolder}/${fileBasenameNoExtension}",
           "args": [],
           "stopAtEntry": false,
-          "cwd": "${workspaceFolder}",
+          "cwd": "${fileDirname}",
           "environment": [],
           "externalConsole": false,
           "MIMode": "gdb",
@@ -50,7 +51,7 @@
           "request": "launch",
           "args": [],
           "stopAtEntry": false,
-          "cwd": "${workspaceFolder}",
+          "cwd": "${fileDirname}",
           "environment": [],
           "externalConsole": false,
           "program": "${workspaceFolder}/${fileBasenameNoExtension}",
