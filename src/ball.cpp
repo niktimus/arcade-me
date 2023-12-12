@@ -3,8 +3,8 @@
 
 Ball::Ball()
 {
-    x = 100;
-    y = 100;
+    x = 400;
+    y = 300;
     speedX = 5;
     speedY = 5;
     radius = 15;

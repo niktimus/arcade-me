@@ -9,7 +9,7 @@ public:
     void Draw();
 
 private:
-    Ball* refBall;
+    Ball* ball;
     int keyLeft;
     int keyRight;
     int x;

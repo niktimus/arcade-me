@@ -2,7 +2,7 @@
 #include "ball.h"
 #include <raylib.h>
 
-Player::Player(Ball* ball) : refBall (ball)
+Player::Player(Ball* ball) : ball (ball)
 {
     // X is horisontal
     // Y is vertical
@@ -52,11 +52,11 @@ void Player::Collide()
     rec.height = radius * 2;
 
     Vector2 v = Vector2();
-    v.x = refBall->GetX();
-    v.y = refBall->GetY();
+    v.x = ball->GetX();
+    v.y = ball->GetY();
 
-    if (CheckCollisionCircleRec(v, refBall->GetRadius(), rec))
-        refBall->Reflect();
+    if (CheckCollisionCircleRec(v, ball->GetRadius(), rec))
+        ball->Reflect();
 }
 
 void Player::Draw()
