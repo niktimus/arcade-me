@@ -46,3 +46,13 @@ void Ball::Reflect()
 {
     speedY *= -1;
 }
+
+void Ball::IncScore()
+{
+    score++;
+}
+
+int Ball::GetScore()
+{
+    return score;
+}

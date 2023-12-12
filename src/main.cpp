@@ -54,9 +54,12 @@ int main()
                 active[i] = !target.GetWasHit();
             }
         }  
-        DrawFPS(0,0);
         player.Draw();
         ball.Draw();
+
+        DrawFPS(screenWidth-50,0);
+        DrawText(TextFormat("%d", ball.GetScore()), 10, 10, 25, BLACK);
+
         EndDrawing();
     }
 

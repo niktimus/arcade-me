@@ -44,6 +44,7 @@ void Target::Update()
     {
         wasHit = true;
         ball->Reflect();
+        ball->IncScore();
     }
 }
 

@@ -10,6 +10,8 @@ public:
     int GetY();
     int GetRadius();
     void Reflect();
+    void IncScore();
+    int GetScore();
 
 private:
     int x;
@@ -17,4 +19,5 @@ private:
     int speedX;
     int speedY;
     int radius;
+    int score = 0;
 };
