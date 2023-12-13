@@ -5,7 +5,7 @@
       "version": "0.2.0",
       "configurations": [
         {
-          "name": "(Windows) Launch",
+          "name": "(Windows) Build and Launch",
           "type": "cppvsdbg",
           "request": "launch",
           "program": "${workspaceFolder}/main.exe",
@@ -15,6 +15,17 @@
           "environment": [],
           "console": "externalTerminal",
           "preLaunchTask": "build debug"
+        },
+        {
+          "name": "(Windows) Launch",
+          "type": "cppvsdbg",
+          "request": "launch",
+          "program": "${workspaceFolder}/main.exe",
+          "args": [],
+          "stopAtEntry": false,
+          "cwd": "${fileDirname}",
+          "environment": [],
+          "console": "externalTerminal",
         },
         {
           "name": "Debug",
