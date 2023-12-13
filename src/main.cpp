@@ -3,6 +3,9 @@
 #include "player.h"
 #include "target.h"
 
+void allUpdate(Ball* ball, Player* player, int numTargets, Target* targets, bool* active);
+void allDraw(Ball *ball, Player *player, int numTargets, Target *targets, bool *active, Color bg);
+
 int main()
 {
     Color darkGreen = Color{20, 160, 133, 255};
@@ -36,29 +39,31 @@ int main()
     InitWindow(screenWidth, screenHeight, "Adagio!");
     SetTargetFPS(60);
 
+    bool onPlay = false;
+
     while (!WindowShouldClose())
     {
-
-        ball.Update();
-        player.Update();
+        if (IsKeyPressed(KEY_SPACE))
+            onPlay = !onPlay;
+        
+        if (onPlay && !ball.isGameOver())
+            allUpdate(&ball, &player, numObjects*numRows, targets, active);
 
         BeginDrawing();
-        ClearBackground(darkGreen);
-        for (int i = 0; i < numObjects*numRows; i++)
-        {
-            Target target = targets[i];
-            if (active[i])
-            {
-                target.Draw();
-                target.Update();
-                active[i] = !target.GetWasHit();
-            }
-        }  
-        player.Draw();
-        ball.Draw();
+        
+        allDraw(&ball, &player, numObjects*numRows, targets, active, darkGreen);
 
-        DrawFPS(screenWidth-50,0);
-        DrawText(TextFormat("%d", ball.GetScore()), 10, 10, 25, BLACK);
+        DrawFPS(GetScreenWidth() - 50, 0);
+        
+        if (!ball.isGameOver())
+            DrawText(TextFormat("%d", ball.GetScore()), 10, 10, 25, BLACK);
+
+        if (ball.isGameOver()) {
+            DrawText("GAME OVER",
+                GetScreenWidth() * 0.25, GetScreenHeight() * 0.5, 50, BLACK);
+            DrawText(TextFormat("%d", ball.GetScore()),
+                GetScreenWidth() * 0.45, GetScreenHeight() * 0.6, 50, BLACK);
+        }
 
         EndDrawing();
     }
@@ -67,4 +72,35 @@ int main()
     MemFree(active);
     CloseWindow();
     return 0;
+}
+
+void allUpdate(Ball* ball, Player* player, int numTargets, Target* targets, bool* active)
+{
+    ball->Update();
+    player->Update();
+    for (int i = 0; i < numTargets; i++)
+    {
+        Target target = targets[i];
+        if (active[i])
+        {
+            target.Draw();
+            target.Update();
+            active[i] = !target.GetWasHit();
+        }
+    }
+}
+
+void allDraw(Ball *ball, Player *player, int numTargets, Target *targets, bool *active, Color bg)
+{
+    ClearBackground(bg);
+    for (int i = 0; i < numTargets; i++)
+    {
+        Target target = targets[i];
+        if (active[i])
+        {
+            target.Draw();
+        }
+    }
+    player->Draw();
+    ball->Draw();
 }

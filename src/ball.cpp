@@ -21,7 +21,7 @@ void Ball::Update()
     if (y + radius >= GetScreenHeight())
     {
         speedY *= -1;
-        score -= 100;
+        gameOver = true;
     }
     
     if (y - radius <= 0)
@@ -63,4 +63,9 @@ void Ball::IncScore()
 int Ball::GetScore()
 {
     return score;
+}
+
+bool Ball::isGameOver()
+{
+    return gameOver;
 }

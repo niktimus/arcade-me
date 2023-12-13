@@ -12,6 +12,7 @@ public:
     void Reflect();
     void IncScore();
     int GetScore();
+    bool isGameOver();
 
 private:
     int x;
@@ -20,4 +21,5 @@ private:
     int speedY;
     int radius;
     int score = 0;
+    bool gameOver = false;
 };
