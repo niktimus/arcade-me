@@ -41,7 +41,7 @@ int main()
 
         ball.Update();
         player.Update();
-        
+
         BeginDrawing();
         ClearBackground(darkGreen);
         for (int i = 0; i < numObjects*numRows; i++)
@@ -64,6 +64,7 @@ int main()
     }
 
     MemFree(targets);
+    MemFree(active);
     CloseWindow();
     return 0;
 }
