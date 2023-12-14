@@ -55,14 +55,19 @@ int main()
 
         DrawFPS(GetScreenWidth() - 50, 0);
         
-        if (!ball.isGameOver())
-            DrawText(TextFormat("%d", ball.GetScore()), 10, 10, 25, BLACK);
-
         if (ball.isGameOver()) {
             DrawText("GAME OVER",
                 GetScreenWidth() * 0.25, GetScreenHeight() * 0.5, 50, BLACK);
             DrawText(TextFormat("%d", ball.GetScore()),
                 GetScreenWidth() * 0.45, GetScreenHeight() * 0.6, 50, BLACK);
+        }
+        else
+            DrawText(TextFormat("%d", ball.GetScore()), 10, 10, 25, BLACK);
+
+        if (!ball.isGameOver() && !onPlay)
+        {
+            DrawText("PAUSE",
+                GetScreenWidth() * 0.4, GetScreenHeight() * 0.5, 50, BLACK);
         }
 
         EndDrawing();
