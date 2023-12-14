@@ -3,6 +3,8 @@
 #include "player.h"
 #include "target.h"
 
+#define HIGHSCORE_FILE scores.data
+
 void allUpdate(Ball* ball, Player* player, int numTargets, Target* targets, bool* active);
 void allDraw(Ball *ball, Player *player, int numTargets, Target *targets, bool *active, Color bg);
 
