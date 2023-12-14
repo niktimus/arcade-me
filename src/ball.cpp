@@ -1,5 +1,6 @@
 #include "ball.h"
 #include <raylib.h>
+#include "scores.h"
 
 Ball::Ball()
 {
@@ -8,6 +9,7 @@ Ball::Ball()
     speedX = 5;
     speedY = 5;
     radius = 15;
+    bestScore = LoadStorageValue(0);
 }
 
 void Ball::Update()
@@ -20,7 +22,10 @@ void Ball::Update()
 
     if (y + radius >= GetScreenHeight())
     {
-        speedY *= -1;
+        if (score > bestScore) {
+            SaveStorageValue(0, score);
+            bestScore = score;
+        }
         gameOver = true;
     }
     
@@ -68,4 +73,9 @@ int Ball::GetScore()
 bool Ball::isGameOver()
 {
     return gameOver;
+}
+
+int Ball::GetBestScore()
+{
+    return bestScore;
 }

@@ -3,7 +3,6 @@
 #include "player.h"
 #include "target.h"
 
-#define HIGHSCORE_FILE scores.data
 
 void allUpdate(Ball* ball, Player* player, int numTargets, Target* targets, bool* active);
 void allDraw(Ball *ball, Player *player, int numTargets, Target *targets, bool *active, Color bg);
@@ -36,7 +35,7 @@ int main()
             sumWidth += width;
         }
     }
-    
+
 
     InitWindow(screenWidth, screenHeight, "Adagio!");
     SetTargetFPS(60);
@@ -62,6 +61,8 @@ int main()
                 GetScreenWidth() * 0.25, GetScreenHeight() * 0.5, 50, BLACK);
             DrawText(TextFormat("%d", ball.GetScore()),
                 GetScreenWidth() * 0.45, GetScreenHeight() * 0.6, 50, BLACK);
+            DrawText(TextFormat("BEST: %d", ball.GetBestScore()),
+                GetScreenWidth() * 0.35, GetScreenHeight() * 0.7, 50, BLACK);
         }
         else
             DrawText(TextFormat("%d", ball.GetScore()), 10, 10, 25, BLACK);

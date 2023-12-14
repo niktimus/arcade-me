@@ -13,6 +13,7 @@ public:
     void IncScore();
     int GetScore();
     bool isGameOver();
+    int GetBestScore();
 
 private:
     int x;
@@ -22,4 +23,5 @@ private:
     int radius;
     int score = 0;
     bool gameOver = false;
+    int bestScore;
 };
